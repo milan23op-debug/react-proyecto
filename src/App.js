@@ -3,7 +3,7 @@ import Pokedex from "./Pokedex";
 import Spotify from "./Spotify";
 
 export default function App() {
-  const [pantalla, setPantalla] = useState("spotify"); // por si quieres ampliar a otras pantallas después
+  const [pantalla, setPantalla] = useState("pokedex"); // por si quieres ampliar a otras pantallas después
 
   return (
     <div>
@@ -12,7 +12,7 @@ export default function App() {
         {/* aquí podrías agregar más botones para otras secciones */}
       </nav>
 
-      {pantalla === "spotify" && <Spotify />}
+      {pantalla === "pokedex" && <Pokedex />}
     </div>
   );
 }
