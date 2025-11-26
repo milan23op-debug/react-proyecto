@@ -1,0 +1,142 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
+body{background:#191414;color:#fff;overflow:hidden}
+
+.aplicacion-spotify{display:grid;grid-template-areas:"barra-lateral contenido-principal" "barra-reproductor barra-reproductor";grid-template-rows:1fr 90px;grid-template-columns:240px 1fr;height:100vh}
+.barra-lateral{grid-area:barra-lateral;background:#000;padding:20px}
+.contenido-principal{grid-area:contenido-principal;background:linear-gradient(#3d1e6d, #191414 400px);overflow-y:auto}
+.barra-reproductor{grid-area:barra-reproductor;background:#282828;padding:0 16px;display:flex;align-items:center;justify-content:space-between}
+
+.logo{display:flex;align-items:center;gap:12px;margin-bottom:30px;font-size:24px;font-weight:bold}
+.elemento-navegacion{padding:12px 0;display:flex;align-items:center;gap:16px;color:#b3b3b3;cursor:pointer}
+.elemento-navegacion.activo{color:#fff}
+.acciones-listas{margin-top:auto}
+.crear-lista,.canciones-gustadas{display:flex;align-items:center;gap:16px;padding:12px 0;color:#b3b3b3;cursor:pointer}
+
+.barra-superior{padding:16px 32px;display:flex;justify-content:flex-end}
+.menu-usuario{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,0.7);border-radius:23px;padding:4px 12px;cursor:pointer}
+.avatar-usuario{width:28px;height:28px;border-radius:50%;background:#535353;display:flex;align-items:center;justify-content:center;font-size:14px}
+.nombre-usuario{font-size:14px;font-weight:600}
+.area-contenido{padding:0 32px 32px}
+
+.seccion-contenido{margin-bottom:32px}
+.titulo-seccion{font-size:24px;font-weight:bold;margin-bottom:20px}
+.encabezado-seccion{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.ver-todo{color:#b3b3b3;font-size:14px;font-weight:600;cursor:pointer}
+
+.contenedor-carrusel{position:relative;display:flex;align-items:center}
+.carrusel{display:flex;overflow-x:auto;gap:24px;padding:10px 0;scroll-behavior:smooth}
+.carrusel::-webkit-scrollbar{display:none}
+.flecha-carrusel{background:rgba(0,0,0,0.5);border:none;border-radius:50%;width:40px;height:40px;color:white;cursor:pointer;position:absolute}
+.flecha-carrusel.izquierda{left:-20px}.flecha-carrusel.derecha{right:-20px}
+
+/* ========== CARRUSEL ========== */
+.tarjeta-cancion {
+  width: 180px;
+  background: #181818;
+  border-radius: 6px;
+  padding: 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tarjeta-cancion:hover {
+  background: #282828;
+}
+
+.imagen-cancion {
+  width: 180px;
+  height: 180px;
+  background: #333;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.info-tarjeta-cancion {
+  display: block;
+}
+
+.info-tarjeta-cancion h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info-tarjeta-cancion p {
+  font-size: 14px;
+  color: #b3b3b3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* BARRA REPRODUCTOR */
+.info-cancion-reproductor {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 30%;
+}
+
+.portada-cancion{width:56px;height:56px;background:#333;border-radius:4px;background-size:cover}
+.detalles-cancion{flex:1;min-width:0}
+.nombre-cancion{font-size:14px;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.artista-cancion{font-size:11px;color:#b3b3b3}
+.boton-gustar{background:none;border:none;color:#b3b3b3;cursor:pointer;padding:8px}
+
+.controles-reproductor{display:flex;flex-direction:column;align-items:center;gap:8px;width:40%}
+.botones-control{display:flex;align-items:center;gap:16px}
+.boton-control{background:none;border:none;color:#b3b3b3;cursor:pointer;padding:4px}
+.boton-play-pause{background:none;border:none;color:#fff;cursor:pointer;padding:4px}
+
+.contenedor-progreso{display:flex;align-items:center;gap:8px;width:100%}
+.tiempo-actual,.tiempo-total{font-size:11px;color:#b3b3b3;min-width:40px}
+.deslizador-progreso{width:100%;height:4px;background:#5e5e5e;-webkit-appearance:none}
+
+.controles-volumen{display:flex;align-items:center;gap:8px;width:30%;justify-content:flex-end}
+.entrada-deslizador-volumen{width:100px;height:4px;background:#5e5e5e;-webkit-appearance:none}
+
+.contenedor-menu-usuario{position:relative}
+.menu-desplegable-usuario{position:absolute;top:100%;right:0;background:#282828;border-radius:4px;padding:4px;z-index:1000;min-width:196px;margin-top:8px}
+.elemento-desplegable{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer}
+.elemento-desplegable:hover{background:#3e3e3e}
+
+.panel-album{position:fixed;top:0;right:-400px;width:400px;height:100vh;background:#282828;z-index:2000;transition:right 0.3s}
+.panel-album.abierto{right:0}
+.superposicion-panel{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1999}
+
+.encabezado-panel-album{display:flex;align-items:center;padding:20px;border-bottom:1px solid #404040;background:#181818}
+.boton-cerrar-panel{background:none;border:none;color:#b3b3b3;cursor:pointer;padding:8px;margin-right:15px}
+
+.info-album{padding:24px;display:flex;gap:16px;align-items:center;background:linear-gradient(#3d1e6d,#282828)}
+.portada-album{width:80px;height:80px;border-radius:4px;background-size:cover}
+.detalles-album h2{font-size:18px;font-weight:bold;margin-bottom:8px}
+.detalles-album p{font-size:14px;color:#b3b3b3;margin-bottom:4px}
+
+.lista-canciones{padding:0 20px 20px}
+.elemento-cancion{display:flex;align-items:center;padding:8px 12px;border-radius:4px;cursor:pointer;gap:12px}
+.elemento-cancion:hover{background:rgba(255,255,255,0.1)}
+.elemento-cancion.sonando{background:rgba(29,185,84,0.1)}
+.numero-cancion{width:24px;text-align:center;color:#b3b3b3}
+.titulo-cancion{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.artista-cancion-panel{font-size:12px;color:#b3b3b3}
+.duracion-cancion{font-size:12px;color:#b3b3b3;width:40px;text-align:right}
+
+.contenedor-autenticacion{position:fixed;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#191414}
+.tarjeta-autenticacion{background:#282828;border-radius:8px;padding:30px;max-width:350px;border:1px solid #404040}
+.logo-autenticacion{text-align:center;margin-bottom:20px}
+.logo-autenticacion i{font-size:40px;color:#1DB954;margin-bottom:10px}
+.logo-autenticacion h1{font-size:28px;font-weight:bold}
+.pestanas-autenticacion{display:flex;margin-bottom:20px;border-bottom:1px solid #404040}
+.pestana-autenticacion{flex:1;background:none;border:none;color:#b3b3b3;padding:10px;cursor:pointer}
+.pestana-autenticacion.activa{color:#1DB954;border-bottom:2px solid #1DB954}
+.formulario-autenticacion{display:flex;flex-direction:column;gap:15px}
+.grupo-formulario input{background:#181818;border:1px solid #404040;border-radius:4px;padding:12px;color:#fff;width:100%}
+.boton-autenticacion{background:#1DB954;color:#000;border:none;border-radius:4px;padding:12px;font-weight:bold;cursor:pointer;margin-top:10px}
