@@ -3,15 +3,16 @@ import Pokedex from "./Pokedex";
 import Spotify from "./Spotify";
 
 export default function App() {
-  const [pantalla, setPantalla] = useState("pokedex"); // por si quieres ampliar a otras pantallas después
+  const [pantalla, setPantalla] = useState("spotify");
 
   return (
     <div>
       <nav style={{ marginBottom: "20px" }}>
-        
-        {/* aquí podrías agregar más botones para otras secciones */}
+        <button onClick={() => setPantalla("spotify")}>Spotify</button>
+        <button onClick={() => setPantalla("pokedex")}>Pokédex</button>
       </nav>
 
+      {pantalla === "spotify" && <Spotify />}
       {pantalla === "pokedex" && <Pokedex />}
     </div>
   );
